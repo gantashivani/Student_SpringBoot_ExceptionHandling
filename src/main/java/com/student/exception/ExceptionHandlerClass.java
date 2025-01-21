@@ -8,9 +8,16 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionHandlerClass {
 	
-	@ExceptionHandler({StudentNotFoundException.class})
+	@ExceptionHandler(StudentNotFoundException.class)
 	public ResponseEntity<String> handleStudentNotFoundException(StudentNotFoundException studentException) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(studentException.getMessage());
 	}
+	
+	
+	@ExceptionHandler(StudentAlreadyExistsException.class)
+	public ResponseEntity<String> handleStudentAlreadyExistsException(StudentAlreadyExistsException studentException) {
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(studentException.getMessage());
+	}
+
 
 }
